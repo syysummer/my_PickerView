@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/pickerView.css" />
+    <script type="text/javascript" src="./js/pickerView.js"></script>
+    <style type='text/css'>
+        /* ._picker-wrapper ._picker-head{
+            position: relative;
+            background: #ffffff;
+        }
+        ._picker-wrapper ._picker-title{
+            font-size: .32rem;
+            color: #666666;
+        }
+        ._picker-wrapper ._picker-btn-cancel{
+            height: .26rem;
+            position: absolute !important;
+            left: 20rem !important;
+            top: .25rem !important;
+            font-size: 0;
+            background: url('./img/close_icon.png') no-repeat;
+            background-position: center;
+        }
+        ._picker-wrapper ._picker-btn-confirm{
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index:10000;
+            width: 300px;
+            height: 50px;
+            border-radius: 3px;
+            color: #ffffff;
+            font-size:28px;
+            font-weight: bold;
+            background: #8E1EB4;
+        } */
+        /* ._picker-wrapper ._picker-data-list li{
+            height: 40px;
+            line-height: 40px;
+        }
+        ._picker-wrapper ._picker-content:before{
+            bottom: 170px;
+        }
+        ._picker-wrapper ._picker-content:after{
+            top: 90px;
+        }  */
+    </style>
+</head>
+<body>
+    <div id="bindPicker1">点击选择1</div>
+	
+	<script type="text/javascript">
+        /*
+         * @param selector 绑定触发选择器的元素id
+         * @param title 选择器标题
+         * @param cols 选择器内容
+         * @param onSelected 某列中某项被选中的回调函数
+         *  colIndex,selectedIndex,selectedValue分别代表选中列、被选中项下标、被选中项的值
+         * @param onConfirm 点击确定的回调
+         *  values代表顺序返回的选中值数组
+         * @param onCancel 点击取消的回调
+         */
+        var dataList = [
+        '<span style="display: flex;justify-content: center;"><img style="width: 1.2rem;margin-right: .2rem;" src="dgdfg"/><span style="font-size: .28rem;" class="innerValue">PayPal</span></span>',
+        '<span style="display: flex;justify-content: center;"><img style="width: 1.2rem;margin-right: .2rem;" src="dgdfg"/><span style="font-size: .28rem;" class="innerValue">Western Union</span></span>',
+        '<span style="display: flex;justify-content: center;"><img style="width: 1.2rem;margin-right: .2rem;" src="dgdfg"/><span style="font-size: .28rem;" class="innerValue">Banker Transfer</span></span>',
+        '<span style="display: flex;justify-content: center;"><img style="width: 1.2rem;margin-right: .2rem;" src="dgdfg"/><span style="font-size: .28rem;" class="innerValue">Balance</span></span>'
+        ]
+		var pickerView1  = new PickerView({
+			selector: 'bindPicker1',
+			title: 'Pay Method',
+			cols:[
+                {
+                    curVal: "shenzen",
+                    values: dataList
+                }
+            ],
+            onConfirm: function(values) {
+                console.log(values);
+                // 实现图片
+                // var $innerContent = document.createElement('div');
+                // $innerContent.innerHTML = values;
+                // console.log($innerContent.children[0].lastChild.innerText);
+                // document.getElementById('bindPicker1').innerHtml = $innerContent;
+                document.getElementById('bindPicker1').innerHtml = values;
+            }
+        });
+        var confirmBtn = document.querySelector('._picker-wrapper ._picker-btn-confirm');
+        confirmBtn.style.top = 'unset';
+        confirmBtn.innerText = 'confirm';
+    </script>
+    
+</body>
+</html>
